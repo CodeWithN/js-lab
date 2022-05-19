@@ -12,6 +12,12 @@
         h1 {
             color: #0B3954;
         }
+		#div1 {
+			width: 350px;
+			height: 70px;
+			padding: 10px;
+			border: 1px solid #aaaaaa;
+			}
 		
 		.green {
 		color: green;
@@ -27,6 +33,8 @@
         <li class="instruction">Obserwuj obszar gry, po zmianie koloru kliknij w obszar najszybciej jak potrafisz</li>
         <li class="instruction">Powtórz czynność 5 razy.</li>
         <li class="instruction">Jeśli chcesz zakończyć grę wcześniej nasiśnij 'Stop'.</li>
+		
+		
 	
     </ol>
 	<!--
@@ -35,7 +43,8 @@
 	 -->
 	<button type="button" onclick="startGame()">Start</button>
 	<button type="button" onclick="stopGame()">Stop</button>
-		
+	
+	<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>	
 	<!-- doday przycisk    najechanie na przycisk-onmouseover  -->
 	<!--
 	<button type="button" onclick="removeBoringStuff()">Usuń nudne rzeczy</button>
