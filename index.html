@@ -4,7 +4,7 @@
     <title>JS Lab</title>
     <style>
         body {
-            margin: 7;
+            margin: 10;
             padding: 5;
             font-family: Arial, serif;
         }
@@ -12,12 +12,24 @@
         h1 {
             color: #0B3954;
         }
+		
+		#b1{
+		   
+			height: 50px;
+			width: 150px;
+			background: #2e8b57;
+    
+			text-align: center;
+			font: bold 1.5em/10px "Helvetica Neue", sans-serif;
+			}
+			
 		#div1 {
-			width: 350px;
-			height: 70px;
+			width: 450px;
+			height: 120px;
 			padding: 10px;
 			border: 1px solid #aaaaaa;
 			}
+	
 		
 		.green {
 		color: green;
@@ -41,8 +53,8 @@
 	<input type="text" id="myTextField">
 	<input type="checkbox" id="myCheckbox">
 	 -->
-	<button type="button" onclick="startGame()">Start</button>
-	<button type="button" onclick="stopGame()">Stop</button>
+	<button id="b1" type="button" onclick="startGame()">Start</button>
+	<button id="b1" type="button" onclick="stopGame()">Stop</button>
 	
 	<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>	
 	<!-- doday przycisk    najechanie na przycisk-onmouseover  -->
