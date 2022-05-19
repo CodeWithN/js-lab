@@ -12,6 +12,10 @@
         h1 {
             color: #0B3954;
         }
+		
+		.green {
+		color: green;
+		}
     </style>
 </head>
 <body>
@@ -24,13 +28,28 @@
         <li>Nauczyć się JS</li>
         <li id="super-important">Zaimplementować</li>
     </ol>
+	
+	<input type="text" id="myTextField">
+	<input type="checkbox" id="myCheckbox">
+	<button type="button" onclick="readValues()">Odczytaj wartości</button>
+	
+	<!-- doday przycisk    najechanie na przycisk-onmouseover  -->
+	<!--
+	<button type="button" onclick="removeBoringStuff()">Usuń nudne rzeczy</button>
+	 -->
 </div>
 <script>
-    const nudy = document.querySelectorAll("#app .boring");
-	nudy.forEach(element => {
-    alert(`Nuda: ${element.innerText}`);
-    element.classList.remove('boring');
-	});
+//bedzie wykonanay dopiero gdy tos zawola funkcje w wyniku zdarzenia wywolanefgo przez uzytkownicka
+	//function removeBoringStuff(){
+	//document.querySelectorAll("#app .boring").forEach((e) => e.remove());
+	//}
+	function readValues(){
+	const isChecked = document.getElementById('myCheckbox').checked;
+	if(isChecked){
+	const text = document.getElementById('myTextField').value;
+	alert(text);
+	}
+}	
 </script>
 </body>
 </html>
