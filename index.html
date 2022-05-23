@@ -30,8 +30,7 @@
     
 			text-align: center;
 			font: bold 1.2em/200px "Helvetica Neue", sans-serif;
-			}			
-			
+			}				
 			
 		#div1 {
 			width: 450px;
@@ -41,7 +40,7 @@
 			}
 	
 		.green {
-		color: green;
+			color: green;
 		}
     </style>
 </head>
@@ -56,34 +55,55 @@
         <li class="instruction">Jeśli chcesz zakończyć grę wcześniej nasiśnij 'Stop'.</li>
 	    </ol>
 
-
 	<button id="startStop" type="button" onclick="startGame()">Start</button>
 	<button id="startStop" type="button" onclick="stopGame()">Stop</button>
 	
 	<div 
-	<button id="buttonGame" type="button" onclick="myFunction()"> </button>
+	<button id="buttonGame" type="button" > GameSpace</button>
 	</div>
 	
 
-</div>
-
-<script>
+	<div>
+	<h2 id="second-header">Panel statystyk:</h2>
 		
+		<table id="results">
+			<tr>
+				<th> Twoja prędkość [ms]:</th>
+				<td id="current">0</td>
+			</tr>
+
+		</table>
+	</div>
+<script>
 
 	function startGame(){
+		buttonGame.innerText = 'Kliknij tutaj, gdy zmieni się kolor';	
 		
-	buttonGame.innerText = 'Kliknij tutaj, gdy zmieni się kolor';		
-	setTimeout(changeColor, (Math.floor(Math.random() * 10) + 1)*1000);
+		let randomDelay = (Math.floor(Math.random() * 10) + 1)*1000;
+		setTimeout(changeColor, randomDelay);
+		//clearTimeout(timeoutId);
+
+		const now = new Date();
+		const timestampInMilliseconds = now.getTime();
+	
+		buttonGame.onclick = function () {
+				const now2 = new Date();
+				score = now2.getTime() - timestampInMilliseconds - randomDelay;
+				score = Math.round(score);
+					document.getElementById("current").innerHTML = score.toString();
+					let table = document.getElementById('results');
+					
+			}		
 	}
-		
 			
 	function changeColor(){
 		var randomColor = Math.floor(Math.random()*16777215).toString(16); //The number of colors from black to white = 16777216
 		document.getElementById("buttonGame").style.background =  "#" + randomColor;
 	}
 	
-		
-	
 </script>
 </body>
 </html>
+
+
+
