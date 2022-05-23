@@ -13,7 +13,16 @@
             color: #0B3954;
         }
 		
-		#startStop{
+		#startB{
+		    margin: 20;
+			height: 50px;
+			width: 150px;
+			background: #2e8b57;
+    
+			text-align: center;
+			font: bold 1.5em/10px "Helvetica Neue", sans-serif;
+			}
+		#stopB{
 		    margin: 20;
 			height: 50px;
 			width: 150px;
@@ -55,8 +64,8 @@
         <li class="instruction">Jeśli chcesz zakończyć grę wcześniej nasiśnij 'Stop'.</li>
 	    </ol>
 
-	<button id="startStop" type="button" onclick="startGame()">Start</button>
-	<button id="startStop" type="button" onclick="stopGame()">Stop</button>
+	<button id="startB" type="button" onclick="startGame()">Start</button>
+	<button id="stopB" type="button" onclick="stopGame()">Stop</button>
 	
 	<div 
 	<button id="buttonGame" type="button" > GameSpace</button>
@@ -68,15 +77,27 @@
 		
 		<table id="results">
 			<tr>
-				<th> Twoja prędkość [ms]:</th>
+				<th> Twoja ostatnia prędkość [ms]:</th>
 				<td id="current">0</td>
 			</tr>
-
+			<tr>
+				<th> Najkrótszy czas reakcji [ms]:</th>
+				<td id="minR">0</td>
+			</tr>
+						<tr>
+				<th> Najdłuższy czas reakcji [ms]:</th>
+				<td id="maxR">0</td>
+			</tr>
+						<tr>
+				<th> Średni czas reakcji [ms]:</th>
+				<td id="average">0</td>
+			</tr>
 		</table>
 	</div>
 <script>
 
 	function startGame(){
+		document.getElementById("buttonGame").style.background =  "#f3c6ab";
 		buttonGame.innerText = 'Kliknij tutaj, gdy zmieni się kolor';	
 		
 		let randomDelay = (Math.floor(Math.random() * 10) + 1)*1000;
@@ -90,10 +111,27 @@
 				const now2 = new Date();
 				score = now2.getTime() - timestampInMilliseconds - randomDelay;
 				score = Math.round(score);
-					document.getElementById("current").innerHTML = score.toString();
-					let table = document.getElementById('results');
-					
+				
+				let maxR = score;
+				let minR = score;
+				
+				let table = document.getElementById('results');			
+								
+
+				document.getElementById("current").innerHTML = score.toString();
+				document.getElementById("minR").innerHTML = minR.toString();
+				document.getElementById("maxR").innerHTML = maxR.toString();	
 			}		
+	}
+	
+	function stopGame(){
+		document.getElementById("buttonGame").style.background.removeAttribute;
+		document.getElementById("buttonGame").removeAttribute('onclick');
+		document.getElementById("buttonGame").style.background =  "#f3c6ab";
+		buttonGame.innerText = 'KoniecGry';	
+		document.getElementById("current").innerHTML = 0;
+		document.getElementById("minR").innerHTML = 0;
+		document.getElementById("maxR").innerHTML = 0;	
 	}
 			
 	function changeColor(){
