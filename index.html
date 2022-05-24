@@ -95,9 +95,10 @@
 		</table>
 	</div>
 <script>
-
+		let gameNumber = 1;
 	function startGame(){
-		document.getElementById("buttonGame").style.background =  "#f3c6ab";
+	
+		//document.getElementById("buttonGame").style.background =  "#f3c6ab";
 		buttonGame.innerText = 'Kliknij tutaj, gdy zmieni się kolor';	
 		
 		let randomDelay = (Math.floor(Math.random() * 10) + 1)*1000;
@@ -106,33 +107,55 @@
 
 		const now = new Date();
 		const timestampInMilliseconds = now.getTime();
-	
+		
+		
 		buttonGame.onclick = function () {
-				const now2 = new Date();
-				score = now2.getTime() - timestampInMilliseconds - randomDelay;
-				score = Math.round(score);
+			const now2 = new Date();
+			score = now2.getTime() - timestampInMilliseconds - randomDelay;
+			score = Math.round(score);
 				
-				let maxR = score;
-				let minR = score;
+			let maxR = score;
+			let minR = score;
+			let table = document.getElementById('results');							
+			document.getElementById("current").innerHTML = score.toString();
+			document.getElementById("minR").innerHTML = minR.toString();
+			document.getElementById("maxR").innerHTML = maxR.toString();	
 				
-				let table = document.getElementById('results');			
-								
+			gameNumber++;
+			
+		if(gameNumber < 6){
+			startGame();
+		}
+		else{
+			endGame();
+			gameNumber = 1;
+			
+		}
 
-				document.getElementById("current").innerHTML = score.toString();
-				document.getElementById("minR").innerHTML = minR.toString();
-				document.getElementById("maxR").innerHTML = maxR.toString();	
-			}		
+		}		
 	}
 	
 	function stopGame(){
 		document.getElementById("buttonGame").style.background.removeAttribute;
 		document.getElementById("buttonGame").removeAttribute('onclick');
-		document.getElementById("buttonGame").style.background =  "#f3c6ab";
+		//document.getElementById("buttonGame").style.background =  "#f3c6ab";
 		buttonGame.innerText = 'KoniecGry';	
+		cleanValue();
+	
+	}
+		function endGame(){
+		document.getElementById("buttonGame").style.background.removeAttribute;
+		document.getElementById("buttonGame").removeAttribute('onclick');
+		document.getElementById("buttonGame").style.background =  "#f3c6ab";
+		buttonGame.innerText = 'KoniecGry';		
+	}
+	
+	function cleanValue(){
 		document.getElementById("current").innerHTML = 0;
 		document.getElementById("minR").innerHTML = 0;
-		document.getElementById("maxR").innerHTML = 0;	
+		document.getElementById("maxR").innerHTML = 0;
 	}
+	
 			
 	function changeColor(){
 		var randomColor = Math.floor(Math.random()*16777215).toString(16); //The number of colors from black to white = 16777216
