@@ -88,7 +88,10 @@
 				<th> Najdłuższy czas reakcji [ms]:</th>
 				<td id="maxR">0</td>
 			</tr>
-
+			<tr>
+				<th> Średni czas reakcji [ms]:</th>
+				<td id="average">0</td>
+			</tr>
 			<tr>
 				<th> Numer gry:</th>
 				<td id="gameNumber">0</td>
@@ -100,6 +103,7 @@
 	let gameNumber = 1;
 	let minR
 	let maxR
+	let average=0;
 	let minimumScoreValue =1;
 	function startGame(){
 	
@@ -117,7 +121,6 @@
 			score = now2.getTime() - timestampInMilliseconds - randomDelay;
 			score = Math.round(score);
 
-				
 		if (minR > score || !minR ) {
 			if (score> minimumScoreValue){
 				minR = score;
@@ -127,6 +130,9 @@
 		if (maxR < score || !maxR) {
 			maxR = score;
 		}
+		
+		average = (average * (gameNumber - 1) + score) / gameNumber;
+		document.getElementById("average").innerHTML = average;
 		
 			let table = document.getElementById('statistic');							
 			document.getElementById("current").innerHTML = score.toString();
