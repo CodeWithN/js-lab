@@ -84,26 +84,29 @@
 				<th> Najkrótszy czas reakcji [ms]:</th>
 				<td id="minR">0</td>
 			</tr>
-						<tr>
+			<tr>
 				<th> Najdłuższy czas reakcji [ms]:</th>
 				<td id="maxR">0</td>
 			</tr>
-						<tr>
-				<th> Średni czas reakcji [ms]:</th>
-				<td id="average">0</td>
+
+			<tr>
+				<th> Numer gry:</th>
+				<td id="gameNumber">0</td>
 			</tr>
 		</table>
 	</div>
 <script>
-		let gameNumber = 1;
+
+	let gameNumber = 1;
+	let minR
+	let maxR
+	let minimumScoreValue =1;
 	function startGame(){
 	
-		//document.getElementById("buttonGame").style.background =  "#f3c6ab";
 		buttonGame.innerText = 'Kliknij tutaj, gdy zmieni się kolor';	
 		
 		let randomDelay = (Math.floor(Math.random() * 10) + 1)*1000;
 		setTimeout(changeColor, randomDelay);
-		//clearTimeout(timeoutId);
 
 		const now = new Date();
 		const timestampInMilliseconds = now.getTime();
@@ -113,24 +116,35 @@
 			const now2 = new Date();
 			score = now2.getTime() - timestampInMilliseconds - randomDelay;
 			score = Math.round(score);
+
 				
-			let maxR = score;
-			let minR = score;
-			let table = document.getElementById('results');							
+		if (minR > score || !minR ) {
+			if (score> minimumScoreValue){
+				minR = score;
+			}
+		}
+		
+		if (maxR < score || !maxR) {
+			maxR = score;
+		}
+		
+			let table = document.getElementById('statistic');							
 			document.getElementById("current").innerHTML = score.toString();
-			document.getElementById("minR").innerHTML = minR.toString();
-			document.getElementById("maxR").innerHTML = maxR.toString();	
-				
-			gameNumber++;
+			document.getElementById("minR").innerHTML = minR;
+			document.getElementById("maxR").innerHTML = maxR;
+			document.getElementById("gameNumber").innerHTML = gameNumber;
+	
+			gameNumber++;	
 			
 		if(gameNumber < 6){
+			
 			startGame();
+			
 		}
 		else{
 			endGame();
-			gameNumber = 1;
-			
-		}
+			gameNumber = 1;	
+			}
 
 		}		
 	}
@@ -154,6 +168,7 @@
 		document.getElementById("current").innerHTML = 0;
 		document.getElementById("minR").innerHTML = 0;
 		document.getElementById("maxR").innerHTML = 0;
+		document.getElementById("gameNumber").innerHTML = 0;
 	}
 	
 			
