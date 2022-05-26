@@ -158,9 +158,10 @@
 	function stopGame(){
 		document.getElementById("buttonGame").style.background.removeAttribute;
 		document.getElementById("buttonGame").removeAttribute('onclick');
-		//document.getElementById("buttonGame").style.background =  "#f3c6ab";
+		document.getElementById("buttonGame").style.background =  "#f3c6ab";
 		buttonGame.innerText = 'KoniecGry';	
 		cleanValue();
+		gameNumber = 1;
 	
 	}
 		function endGame(){
@@ -174,6 +175,7 @@
 		document.getElementById("current").innerHTML = 0;
 		document.getElementById("minR").innerHTML = 0;
 		document.getElementById("maxR").innerHTML = 0;
+		document.getElementById("average").innerHTML = 0;
 		document.getElementById("gameNumber").innerHTML = 0;
 	}
 	
